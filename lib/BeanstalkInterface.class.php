@@ -167,6 +167,20 @@ class BeanstalkInterface
     {
         $this->_client->useTube($tube)->kick($limit);
     }
+    
+    public function buryReady( $tube )
+    {
+           $job = $this->_client->useTube( $tube )->peekReady();
+           $this->_client->watch($tube);
+           $ignoreTubes = array_diff_key($this->_watching, array($tube => true));
+           foreach ($ignoreTubes as $ignoreTube => $true)
+           {
+                 $this->ignore($ignoreTube);
+           }
+           $this->_client->reserve(10);
+           $this->_client->bury( $job );
+
+    }
 
     public function deleteReady($tube)
     {
