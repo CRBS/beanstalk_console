@@ -260,6 +260,17 @@ class Console
                 $this->_globalVar['tube']));
         exit();
     }
+    
+    protected function _actionBury()
+    {
+        $this->interface->buryReady( $this->_globalVar[ 'tube' ] );
+        header(
+            sprintf( 'Location: index.php?server=%s&tube=%s', $this->_globalVar[ 'server' ],
+                $this->_globalVar[ 'tube' ] ) );
+        exit();
+    }
+
+
 
     protected function _actionDelete()
     {
