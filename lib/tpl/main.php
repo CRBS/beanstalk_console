@@ -119,6 +119,7 @@ $servers = $console->getServers();
                                 <li><a href="https://github.com/ptrofimov/beanstalk_console">Beanstalk console (github)</a></li>
                             </ul>
                         </li>
+                        <a class="btn btn-small" href="#" id="autoRefresh"><i class="icon-refresh"></i></a>
                     </ul>
                 </div><!-- /.nav-collapse -->
             </div>
